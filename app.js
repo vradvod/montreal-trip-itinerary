@@ -25,7 +25,7 @@
       flights.push({
         id: id(), traveler: t.id, type: 'arrival', date: DAYS[0],
         time: arr, airline: air, flightNo: '',
-        from: vrad || krysia ? 'Orlando (MCO) 8:00am' : grp || walter ? 'Winnipeg (YWG)' : tara ? 'Vancouver' to: 'Montreal (YUL)'
+        from: vrad || krysia ? 'Orlando (MCO) 8:00am' : grp || walter ? 'Winnipeg (YWG)' : tara ? 'Vancouver', to: 'Montreal (YUL)'
       });
       flights.push({
         id: id(), traveler: t.id, type: 'departure', date: DAYS[5],
