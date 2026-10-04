@@ -30,17 +30,17 @@
       flights.push({
         id: id(), traveler: t.id, type: 'departure', date: DAYS[5],
         time: dep, airline: air, flightNo: '',
-        from: 'Montreal (YUL)', to: vrad || krysia ? 'Orlando (MCO) – arrives 12:47pm' : grp || walter ? 'Winnipeg (YWG)'
+        from: 'Montreal (YUL)', to: vrad || krysia ? 'Orlando (MCO) – arrives 12:47pm' : grp || walter ? 'Winnipeg (YWG)' : ''
       });
     });
     const A = (day, start, end, title, location, category, notes, who, suggestion) =>
       ({ id: id(), day, start, end, title, location, category, notes, travelers: who || [], suggestion: !!suggestion });
     const activities = [
-      A(DAYS[0], '12:00', '', 'Drop off bags at Hotel Saint Laurent', '355 Rue Sainte-Catherine O, Montréal', 'hotel', 'Early arrivals can leave luggage with the front desk.', ['vrad', 'krysia']),
-      A(DAYS[0], '12:00', '', 'Drop off bags at Hotel Saint Laurent', '355 Rue Sainte-Catherine O, Montréal', 'hotel', 'Just in time to check in', ['dorota', 'ania', 'urszula', 'danuta', 'marian', 'ala']),
-      A(DAYS[0], '12:00', '', 'Drop off bags at Hotel Saint Laurent', '355 Rue Sainte-Catherine O, Montréal', 'hotel', 'Early arrivals can leave luggage with the front desk.', ['walter']),
+      A(DAYS[0], '12:45', '', 'Drop off bags at Hotel Saint Laurent', '355 Rue Sainte-Catherine O, Montréal', 'hotel', 'Early arrivals can leave luggage with the front desk.', ['vrad', 'krysia']),
+      A(DAYS[0], '15:00', '', 'Drop off bags at Hotel Saint Laurent', '355 Rue Sainte-Catherine O, Montréal', 'hotel', 'Just in time to check in', ['dorota', 'ania', 'urszula', 'danuta', 'marian', 'ala']),
+      A(DAYS[0], '12:45', '', 'Drop off bags at Hotel Saint Laurent', '355 Rue Sainte-Catherine O, Montréal', 'hotel', 'Early arrivals can leave luggage with the front desk.', ['walter']),
       A(DAYS[0], 'TBD', '', 'Drop off bags at Hotel Saint Laurent', '355 Rue Sainte-Catherine O, Montréal', 'hotel', 'Early arrivals can leave luggage with the front desk.', ['tara']),
-      A(DAYS[0], '13:00', '14:00', 'Lunch', 'TBD', 'food', 'TBD', [], true, ['vrad', 'krysia', 'walter']),
+      A(DAYS[0], '13:00', '14:00', 'Lunch', 'TBD', 'food', 'TBD', ['vrad', 'krysia', 'walter']),
       A(DAYS[0], '14:00', '16:00', 'Stroll Old Montréal & Notre-Dame Basilica', 'Old Montréal', 'sight', 'Suggestion – cobblestone streets and Place Jacques-Cartier.', [], true),
       A(DAYS[0], '18:30', '', 'Welcome dinner', 'Old Montréal', 'food', 'Suggestion – try a poutine or bistro near the hotel.', [], true),
       A(DAYS[1], '09:30', '12:00', 'Mount Royal hike & lookout', 'Parc du Mont-Royal', 'sight', 'Suggestion – panoramic city views and fall colours.', [], true),
