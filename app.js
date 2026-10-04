@@ -14,23 +14,24 @@
     const travelers = NAMES.map((n, i) => ({ id: n.toLowerCase(), name: n, color: COLORS[i] }));
     const flights = [];
     const AC = ['vrad', 'krysia', 'walter'];
-    const group = ['ania', 'urszula', 'ala', 'marian', 'danuta', 'dorota'];
+    const group1 = ['ala', 'marian', 'danuta', 'dorota'];
+    const group2 = ['ania', 'urszula';
     travelers.forEach(t => {
       const vrad = t.id === 'vrad', krysia = t.id === 'krysia';
-      const walter = t.id === 'walter', grp = group.includes(t.id), ac = AC.includes(t.id);
+      const walter = t.id === 'walter', grp1 = group1.includes(t.id), grp2 = group2.includes(t.id), ac = AC.includes(t.id);
       const tara = t.id === 'tara';
-      const arr = walter ? '11:56' : grp ? '14:35' : vrad || krysia ? '11:02' : '';
-      const dep = walter ? '19:15' : grp ? '19:00' : vrad || krysia ? '09:35' : '';
+      const arr = walter ? '11:56' : grp1 ? '14:35' : vrad || krysia ? '11:02' : grp2 ? '17:07' : '';
+      const dep = walter ? '19:15' : grp1 ? '19:00' : vrad || krysia ? '09:35' : grp2 ? '19:20' : '';
       const air = ac || walter ? 'Air Canada' : '';
       flights.push({
         id: id(), traveler: t.id, type: 'arrival', date: DAYS[0],
         time: arr, airline: air, flightNo: '',
-        from: vrad || krysia ? 'Orlando (MCO) 8:00am' : grp || walter ? 'Winnipeg (YWG)' : tara ? 'Vancouver' : '', to: 'Montreal (YUL)'
+        from: vrad || krysia ? 'Orlando (MCO) 8:00am' : grp1 || grp2 || walter ? 'Winnipeg (YWG)' : tara ? 'Vancouver' : '', to: 'Montreal (YUL)'
       });
       flights.push({
         id: id(), traveler: t.id, type: 'departure', date: DAYS[5],
         time: dep, airline: air, flightNo: '',
-        from: 'Montreal (YUL)', to: vrad || krysia ? 'Orlando (MCO) – arrives 12:47pm' : grp || walter ? 'Winnipeg (YWG)' : ''
+        from: 'Montreal (YUL)', to: vrad || krysia ? 'Orlando (MCO) – arrives 12:47pm' : grp1 || walter ? 'Winnipeg (YWG)' : grp2 ? 'Winnipeg (YWG) - arrives 12:55 am' : tara ? 'Vancouver' : ''
       });
     });
     const A = (day, start, end, title, location, category, notes, who, suggestion) =>
