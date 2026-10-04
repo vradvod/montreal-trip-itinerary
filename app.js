@@ -4,7 +4,7 @@
   const DAYS = ['2026-10-15', '2026-10-16', '2026-10-17', '2026-10-18', '2026-10-19', '2026-10-20'];
   const CATS = { sight: '🏛️ Sight', food: '🍽️ Food', tour: '🚌 Tour', transit: '🚕 Transit', hotel: '🏨 Hotel', other: '📌 Other' };
   const COLORS = ['#c8102e', '#1d4ed8', '#047857', '#b45309', '#7c3aed', '#be185d', '#0e7490', '#4d7c0f', '#6b21a8'];
-  const NAMES = ['Vrad', 'Krysia', 'Walter', 'Dorothy', 'Tara', 'Ursula', 'Ania', 'Marian', 'Danuta'];
+  const NAMES = ['Vrad', 'Krysia', 'Walter', 'Dorota', 'Tara', 'Urszula', 'Ania', 'Marian', 'Danuta', 'Ala'];
   const HOTEL = { name: 'Hotel Saint Laurent', note: 'Drop off bags on arrival if rooms are not ready.' };
 
   let uid = 0;
