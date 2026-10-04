@@ -13,17 +13,23 @@
   function defaults() {
     const travelers = NAMES.map((n, i) => ({ id: n.toLowerCase(), name: n, color: COLORS[i] }));
     const flights = [];
+    const AC = ['vrad', 'krysia'];
+    const group = ['ania', 'urszula', 'ala', 'marian', 'danuta', 'dorota'];
     travelers.forEach(t => {
       const known = t.id === 'vrad', assumed = t.id === 'krysia';
       const note = assumed ? 'Assumed same as Vrad – please confirm' : known ? '' : 'Flight details TBD';
+      const walter = t.id === 'walter', grp = group.includes(t.id), ac = AC.includes(t.id);
+      const arr = walter ? '11:56' : grp ? '14:35' : known || assumed ? '11:02' : '';
+      const dep = walter ? '21:14' : grp ? '19:00' : known || assumed ? '09:35' : '';
+      const air = ac || walter ? 'Air Canada' : '';
       flights.push({
         id: id(), traveler: t.id, type: 'arrival', date: DAYS[0],
-        time: known || assumed ? '11:02' : '', airline: '', flightNo: '',
+        time: arr, airline: air, flightNo: '',
         from: known || assumed ? 'Orlando (MCO) 8:00am' : '', to: 'Montreal (YUL)', note
       });
       flights.push({
         id: id(), traveler: t.id, type: 'departure', date: DAYS[5],
-        time: known || assumed ? '09:35' : '', airline: 'Air Canada', flightNo: '',
+        time: dep, airline: air, flightNo: '',
         from: 'Montreal (YUL)', to: known || assumed ? 'Orlando (MCO) – arrives 12:47pm' : '', note
       });
     });
