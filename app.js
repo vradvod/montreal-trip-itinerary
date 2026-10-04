@@ -25,7 +25,7 @@
       flights.push({
         id: id(), traveler: t.id, type: 'arrival', date: DAYS[0],
         time: arr, airline: air, flightNo: '',
-        from: vrad || krysia ? 'Orlando (MCO) 8:00am' : grp || walter ? 'Winnipeg (YWG)' : tara ? 'Vancouver', to: 'Montreal (YUL)'
+        from: vrad || krysia ? 'Orlando (MCO) 8:00am' : grp || walter ? 'Winnipeg (YWG)' : tara ? 'Vancouver' : '', to: 'Montreal (YUL)'
       });
       flights.push({
         id: id(), traveler: t.id, type: 'departure', date: DAYS[5],
@@ -53,7 +53,7 @@
       A(DAYS[2], '9:00', '12:00', 'Mont Royale', 'Celebrate 150th', 'sight', 'Dorota suggested', [], true),
       A(DAYS[2], '13:30', '16:00', 'Plateau-Mont-Royal & Mile End walk', 'Plateau', 'sight', 'Suggestion – murals and boutiques.', [], true),
       A(DAYS[4], '20:30', '', 'Farewell dinner', 'TBD', 'food', 'Suggestion – pick a favourite.', [], true),
-      A(DAYS[4], 'TBD', '', 'Tara Leaving for airport', 'Hotel Saint Laurent → YUL', 'transit', 'Nobody knows when the flight departs, not even the airline.', ['tara]'),
+      A(DAYS[4], 'TBD', '', 'Tara Leaving for airport', 'Hotel Saint Laurent → YUL', 'transit', 'Nobody knows when the flight departs, not even the airline.', ['tara']),
       A(DAYS[5], '06:45', '', 'Leave for the airport', 'Hotel Saint Laurent → YUL', 'transit', 'Vrad and Krysia\'s flight departs 9:35am. Adjust for other travelers.', ['vrad', 'krysia']),
       A(DAYS[5], '16:00', '', 'Winnipeg group leaves for the airport', 'Hotel Saint Laurent → YUL', 'transit', 'Winnipeg flight departs 9:35am. Adjust for other travelers.', ['dorota', 'ania', 'urszula', 'danuta', 'marian', 'ala']),
       A(DAYS[5], '16:00', '', 'Walter leaves for the airport', 'Hotel Saint Laurent → YUL', 'transit', 'Winnipeg flight departs 9:14pm. Adjust for other travelers.', ['walter']),
