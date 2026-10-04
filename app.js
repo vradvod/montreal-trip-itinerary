@@ -15,10 +15,10 @@
     const flights = [];
     const AC = ['vrad', 'krysia', 'walter'];
     const group1 = ['ala', 'marian', 'danuta', 'dorota'];
-    const group2 = ['ania', 'urszula';
+    const group2 = ['ania', 'urszula'];
     travelers.forEach(t => {
       const vrad = t.id === 'vrad', krysia = t.id === 'krysia', ania = t.id === 'ania', urszula = t.id === 'urszula', tara = t.id === 'tara';
-      const walter = t.id === 'walter', grp = group.includes(t.id), ac = AC.includes(t.id);
+      const walter = t.id === 'walter', grp = group1.includes(t.id), ac = AC.includes(t.id);
       const arr = walter ? '11:56' : grp ? '14:35' : vrad || krysia ? '11:02' : ania || urszula ? '17:07' : '';
       const dep = walter ? '19:15' : grp ? '19:00' : vrad || krysia ? '09:35' : ania || urszula ? '19:20' : '';
       const air = ac || walter ? 'Air Canada' : '';
@@ -30,7 +30,7 @@
       flights.push({
         id: id(), traveler: t.id, type: 'departure', date: DAYS[5],
         time: dep, airline: air, flightNo: '',
-        from: 'Montreal (YUL)', to: vrad || krysia ? 'Orlando (MCO) – arrives 12:47pm' : grp1 || walter ? 'Winnipeg (YWG)' : grp2 ? 'Winnipeg (YWG) - arrives 12:55 am' : tara ? 'Vancouver' : ''
+        from: 'Montreal (YUL)', to: vrad || krysia ? 'Orlando (MCO) – arrives 12:47pm' : grp || walter ? 'Winnipeg (YWG)' : group2.includes(t.id) ? 'Winnipeg (YWG) - arrives 12:55 am' : tara ? 'Vancouver' : ''
       });
     });
     const A = (day, start, end, title, location, category, notes, who, suggestion) =>
@@ -68,7 +68,7 @@
   const $ = s => document.querySelector(s);
 
   const fmtDay = d => new Date(d + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
-  const fmtTime = t => { if (!t) return 'TBD'; const [h, m] = t.split(':').map(Number); return ((h + 11) % 12 + 1) + ':' + String(m).padStart(2, '0') + (h < 12 ? 'am' : 'pm'); };
+  const fmtTime = t => { if (!t || t === 'TBD') return 'TBD'; const [h, m] = t.split(':').map(Number); return ((h + 11) % 12 + 1) + ':' + String(m).padStart(2, '0') + (h < 12 ? 'am' : 'pm'); };
   const visible = ids => !filter || !ids.length || ids.includes(filter);
   const tagsFor = ids => (ids.length ? ids : state.travelers.map(t => t.id)).filter(i => !filter || i === filter).map(i => `<span class="tag" style="--c:${T(i).color}">${esc(T(i).name)}</span>`).join('');
 
