@@ -13,24 +13,24 @@
   function defaults() {
     const travelers = NAMES.map((n, i) => ({ id: n.toLowerCase(), name: n, color: COLORS[i] }));
     const flights = [];
-    const AC = ['vrad', 'krysia'];
+    const AC = ['vrad', 'krysia', 'walter'];
     const group = ['ania', 'urszula', 'ala', 'marian', 'danuta', 'dorota'];
     travelers.forEach(t => {
-      const known = t.id === 'vrad', assumed = t.id === 'krysia';
-      const note = assumed ? 'Assumed same as Vrad – please confirm' : known ? '' : 'Flight details TBD';
+      const vrad = t.id === 'vrad', krysia = t.id === 'krysia';
       const walter = t.id === 'walter', grp = group.includes(t.id), ac = AC.includes(t.id);
-      const arr = walter ? '11:56' : grp ? '14:35' : known || assumed ? '11:02' : '';
-      const dep = walter ? '21:14' : grp ? '19:00' : known || assumed ? '09:35' : '';
+      const tara = t.id === 'tara';
+      const arr = walter ? '11:56' : grp ? '14:35' : vrad || krysia ? '11:02' : '';
+      const dep = walter ? '19:15' : grp ? '19:00' : vrad || krysia ? '09:35' : '';
       const air = ac || walter ? 'Air Canada' : '';
       flights.push({
         id: id(), traveler: t.id, type: 'arrival', date: DAYS[0],
         time: arr, airline: air, flightNo: '',
-        from: known || assumed ? 'Orlando (MCO) 8:00am' : '', to: 'Montreal (YUL)', note
+        from: vrad || krysia ? 'Orlando (MCO) 8:00am' : grp || walter ? 'Winnipeg (YWG)' : tara ? 'Vancouver' to: 'Montreal (YUL)'
       });
       flights.push({
         id: id(), traveler: t.id, type: 'departure', date: DAYS[5],
         time: dep, airline: air, flightNo: '',
-        from: 'Montreal (YUL)', to: known || assumed ? 'Orlando (MCO) – arrives 12:47pm' : '', note
+        from: 'Montreal (YUL)', to: vrad || krysia ? 'Orlando (MCO) – arrives 12:47pm' : grp || walter ? 'Winnipeg (YWG)'
       });
     });
     const A = (day, start, end, title, location, category, notes, who, suggestion) =>
@@ -46,15 +46,17 @@
       A(DAYS[1], '09:30', '12:00', 'Mount Royal hike & lookout', 'Parc du Mont-Royal', 'sight', 'Suggestion – panoramic city views and fall colours.', [], true),
       A(DAYS[1], '12:30', '14:00', 'Smoked meat lunch at Schwartz\'s', 'Boulevard Saint-Laurent', 'food', 'Suggestion – expect a line.', [], true),
       A(DAYS[1], '15:00', '17:00', 'Montréal Museum of Fine Arts', 'Rue Sherbrooke O', 'sight', 'Suggestion.', [], true),
-      A(DAYS[2], '09:00', '12:00', 'Jean-Talon Market & Little Italy', 'Jean-Talon Market', 'food', 'Suggestion – fall produce and bakeries.', [], true),
-      A(DAYS[2], '14:00', '17:00', 'Underground City & shopping', 'Downtown', 'sight', 'Suggestion – good if the weather is cold.', [], true),
-      A(DAYS[4], '07:00', '20:00', 'Montréal to Québec City bus tour', 'Departure point TBD', 'tour', 'Full-day tour, back around 8:00pm.'),
-      A(DAYS[3], '10:00', '12:00', 'Bagels at St-Viateur / Fairmount', 'Mile End', 'food', 'Suggestion.', [], true),
-      A(DAYS[3], '13:30', '16:00', 'Plateau-Mont-Royal & Mile End walk', 'Plateau', 'sight', 'Suggestion – murals and boutiques.', [], true),
+      A(DAYS[4], '09:00', '12:00', 'Jean-Talon Market & Little Italy', 'Jean-Talon Market', 'food', 'Suggestion – fall produce and bakeries.', [], true),
+      A(DAYS[4], '14:00', '17:00', 'Underground City & shopping', 'Downtown', 'sight', 'Suggestion – good if the weather is cold.', [], true),
+      A(DAYS[3], '07:00', '20:00', 'Montréal to Québec City bus tour', 'Departure point TBD', 'tour', 'Full-day tour, back around 8:00pm.'),
+      A(DAYS[2], '06:00', '23:59', 'Dorota\'s Birthday', 'Celebrate 40th BDay', 'celebrate', 'Need to find some cake'),
+      A(DAYS[2], '9:00', '12:00', 'Mont Royale', 'Celebrate 150th', 'sight', 'Dorota suggested', [], true),
+      A(DAYS[2], '13:30', '16:00', 'Plateau-Mont-Royal & Mile End walk', 'Plateau', 'sight', 'Suggestion – murals and boutiques.', [], true),
       A(DAYS[4], '20:30', '', 'Farewell dinner', 'TBD', 'food', 'Suggestion – pick a favourite.', [], true),
-      A(DAYS[5], '06:45', '', 'Leave for the airport', 'Hotel Saint Laurent → YUL', 'transit', 'Vrad\'s flight departs 9:35am. Adjust for other travelers.', ['vrad', 'krysia']),
-      A(DAYS[5], '16:00', '', 'Leave for the airport', 'Hotel Saint Laurent → YUL', 'transit', 'Winnipeg flight departs 9:35am. Adjust for other travelers.', ['dorota', 'ania', 'urszula', 'danuta', 'marian', 'ala']),
-      A(DAYS[5], '16:00', '', 'Leave for the airport', 'Hotel Saint Laurent → YUL', 'transit', 'Winnipeg flight departs 9:14pm. Adjust for other travelers.', ['walter']),
+      A(DAYS[4], 'TBD', '', 'Tara Leaving for airport', 'Hotel Saint Laurent → YUL', 'transit', 'Nobody knows when the flight departs, not even the airline.', ['tara]'),
+      A(DAYS[5], '06:45', '', 'Leave for the airport', 'Hotel Saint Laurent → YUL', 'transit', 'Vrad and Krysia\'s flight departs 9:35am. Adjust for other travelers.', ['vrad', 'krysia']),
+      A(DAYS[5], '16:00', '', 'Winnipeg group leaves for the airport', 'Hotel Saint Laurent → YUL', 'transit', 'Winnipeg flight departs 9:35am. Adjust for other travelers.', ['dorota', 'ania', 'urszula', 'danuta', 'marian', 'ala']),
+      A(DAYS[5], '16:00', '', 'Walter leaves for the airport', 'Hotel Saint Laurent → YUL', 'transit', 'Winnipeg flight departs 9:14pm. Adjust for other travelers.', ['walter']),
       A(DAYS[5], 'TBD', '', 'Leave for the airport', 'Hotel Saint Laurent → YUL', 'transit', 'Vancouver flight departs TBD. Adjust for other travelers.', ['tara'])
     ];
     return { travelers, flights, activities, hotel: HOTEL };
