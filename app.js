@@ -30,7 +30,11 @@
     const A = (day, start, end, title, location, category, notes, who, suggestion) =>
       ({ id: id(), day, start, end, title, location, category, notes, travelers: who || [], suggestion: !!suggestion });
     const activities = [
-      A(DAYS[0], '12:00', '', 'Drop off bags at Hotel Saint Laurent', '355 Rue Sainte-Catherine O, Montréal', 'hotel', 'Early arrivals can leave luggage with the front desk.'),
+      A(DAYS[0], '12:00', '', 'Drop off bags at Hotel Saint Laurent', '355 Rue Sainte-Catherine O, Montréal', 'hotel', 'Early arrivals can leave luggage with the front desk.', ['vrad', 'krysia']),
+      A(DAYS[0], '12:00', '', 'Drop off bags at Hotel Saint Laurent', '355 Rue Sainte-Catherine O, Montréal', 'hotel', 'Just in time to check in', ['dorota', 'ania', 'urszula', 'danuta', 'marian', 'ala']),
+      A(DAYS[0], '12:00', '', 'Drop off bags at Hotel Saint Laurent', '355 Rue Sainte-Catherine O, Montréal', 'hotel', 'Early arrivals can leave luggage with the front desk.', ['walter']),
+      A(DAYS[0], 'TBD', '', 'Drop off bags at Hotel Saint Laurent', '355 Rue Sainte-Catherine O, Montréal', 'hotel', 'Early arrivals can leave luggage with the front desk.', ['tara']),
+      A(DAYS[0], '13:00', '14:00', 'Lunch', 'TBD', 'sight', 'TBD', [], true, ['vrad', 'krysia', 'walter']),
       A(DAYS[0], '14:00', '16:00', 'Stroll Old Montréal & Notre-Dame Basilica', 'Old Montréal', 'sight', 'Suggestion – cobblestone streets and Place Jacques-Cartier.', [], true),
       A(DAYS[0], '18:30', '', 'Welcome dinner', 'Old Montréal', 'food', 'Suggestion – try a poutine or bistro near the hotel.', [], true),
       A(DAYS[1], '09:30', '12:00', 'Mount Royal hike & lookout', 'Parc du Mont-Royal', 'sight', 'Suggestion – panoramic city views and fall colours.', [], true),
@@ -38,11 +42,14 @@
       A(DAYS[1], '15:00', '17:00', 'Montréal Museum of Fine Arts', 'Rue Sherbrooke O', 'sight', 'Suggestion.', [], true),
       A(DAYS[2], '09:00', '12:00', 'Jean-Talon Market & Little Italy', 'Jean-Talon Market', 'food', 'Suggestion – fall produce and bakeries.', [], true),
       A(DAYS[2], '14:00', '17:00', 'Underground City & shopping', 'Downtown', 'sight', 'Suggestion – good if the weather is cold.', [], true),
-      A(DAYS[3], '07:00', '20:00', 'Montréal to Québec City bus tour', 'Departure point TBD', 'tour', 'Full-day tour, back around 8:00pm.'),
-      A(DAYS[4], '10:00', '12:00', 'Bagels at St-Viateur / Fairmount', 'Mile End', 'food', 'Suggestion.', [], true),
-      A(DAYS[4], '13:30', '16:00', 'Plateau-Mont-Royal & Mile End walk', 'Plateau', 'sight', 'Suggestion – murals and boutiques.', [], true),
-      A(DAYS[4], '19:00', '', 'Farewell dinner', 'TBD', 'food', 'Suggestion – pick a favourite.', [], true),
-      A(DAYS[5], '06:45', '', 'Leave for the airport', 'Hotel Saint Laurent → YUL', 'transit', 'Vrad\'s flight departs 9:35am. Adjust for other travelers.', ['vrad', 'krysia'])
+      A(DAYS[4], '07:00', '20:00', 'Montréal to Québec City bus tour', 'Departure point TBD', 'tour', 'Full-day tour, back around 8:00pm.'),
+      A(DAYS[3], '10:00', '12:00', 'Bagels at St-Viateur / Fairmount', 'Mile End', 'food', 'Suggestion.', [], true),
+      A(DAYS[3], '13:30', '16:00', 'Plateau-Mont-Royal & Mile End walk', 'Plateau', 'sight', 'Suggestion – murals and boutiques.', [], true),
+      A(DAYS[4], '20:30', '', 'Farewell dinner', 'TBD', 'food', 'Suggestion – pick a favourite.', [], true),
+      A(DAYS[5], '06:45', '', 'Leave for the airport', 'Hotel Saint Laurent → YUL', 'transit', 'Vrad\'s flight departs 9:35am. Adjust for other travelers.', ['vrad', 'krysia']),
+      A(DAYS[5], '16:00', '', 'Leave for the airport', 'Hotel Saint Laurent → YUL', 'transit', 'Winnipeg flight departs 9:35am. Adjust for other travelers.', ['dorota', 'ania', 'urszula', 'danuta', 'marian', 'ala']),
+      A(DAYS[5], '16:00', '', 'Leave for the airport', 'Hotel Saint Laurent → YUL', 'transit', 'Winnipeg flight departs 9:14pm. Adjust for other travelers.', ['walter']),
+      A(DAYS[5], 'TBD', '', 'Leave for the airport', 'Hotel Saint Laurent → YUL', 'transit', 'Vancouver flight departs TBD. Adjust for other travelers.', ['tara'])
     ];
     return { travelers, flights, activities, hotel: HOTEL };
   }
